@@ -15,4 +15,5 @@ python shapemerger.py input/*.shp outpath/outfile.shp
 ogr2ogr -f GeoJSON -dsco "COORDINATE_PRECISION=6" output.json input.shp -progress
 ```
 ### 3 Create MBTiles with simplification of polygons (Tippecanoe)
-```5. tippecanoe -f -s EPSG:3857 -o output.mbtiles input.json ```
+The zoomlevel depends on the data and should be checked manually before create the MBTiles (e.g. loaded into TileMill).
+```5. tippecanoe -f --minimum-zoom=8 --maximum-zoom=18 -s EPSG:3857 -o output.mbtiles input.json ```
