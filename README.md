@@ -12,7 +12,7 @@ python shapemerger.py input/*.shp outpath/outfile.shp
 ```
 ### 2 Create GeoJSON from shapefile
 ```
-ogr2ogr -f GeoJSON output.json input.shp -progress
+ogr2ogr -f GeoJSON -dsco "COORDINATE_PRECISION=6" output.json input.shp -progress
 ```
 ### 3 Create MBTiles with simplification of polygons (Tippecanoe)
 ```5. tippecanoe -f -s EPSG:3857 -o output.mbtiles input.json ```
