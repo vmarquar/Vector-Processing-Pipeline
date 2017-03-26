@@ -3,7 +3,6 @@
 ### 1 Transform shapefiles into EPSG:3857 projection (Web Mercator)
 ```
 ogr2ogr -s_srs EPSG:31467 -t_srs EPSG:3857 output.shp input.shp
-
 ```
 ### 1 Merge Shape Files
 All shape files must be in the same directory. `-R` allows recursive merging.
@@ -16,4 +15,6 @@ ogr2ogr -f GeoJSON -dsco "COORDINATE_PRECISION=6" output.json input.shp -progres
 ```
 ### 3 Create MBTiles with simplification of polygons (Tippecanoe)
 The zoomlevel depends on the data and should be checked manually before create the MBTiles (e.g. loaded into TileMill).
-```5. tippecanoe -f --minimum-zoom=8 --maximum-zoom=18 -s EPSG:3857 -o output.mbtiles input.json ```
+```
+tippecanoe -f --minimum-zoom=8 --maximum-zoom=18 -s EPSG:3857 -o output.mbtiles input.json
+```
