@@ -15,6 +15,8 @@ ogr2ogr -f GeoJSON -dsco "COORDINATE_PRECISION=6" output.json input.shp -progres
 ```
 ### 3 Create MBTiles with simplification of polygons (Tippecanoe)
 The zoomlevel depends on the data and should be checked manually before create the MBTiles (e.g. loaded into TileMill).
+See https://github.com/mapbox/tippecanoe/blob/master/README.md for a detailed parameter description.
+As the input data is pretty big and dense (covers whole Germany with >200k features) we need a strong simplification to see something. --maximum-zoom=8 --minimum-zoom=14 --full-detail=10 (default 12) --projection=EPSG:3857 --simplification=5 --coalesce --drop-polygons --read-parallel (needs line seperated features) --drop-smallest-as-needed
 ```
-tippecanoe -f --minimum-zoom=8 --maximum-zoom=18 -s EPSG:3857 -o output.mbtiles input.json
+tippecanoe --minimum-zoom=8 --maximum-zoom=18 --projection=EPSG:3857 --full-detail=10 --simplification=5 --coalesce --drop-polygons --read-parallel --drop-smallest-as-needed -o output.mbtiles input.json
 ```
