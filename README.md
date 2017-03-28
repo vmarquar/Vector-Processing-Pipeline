@@ -20,3 +20,10 @@ As the input data is pretty big and dense (covers whole Germany with >200k featu
 ```
 tippecanoe --minimum-zoom=8 --maximum-zoom=18 --projection=EPSG:3857 --full-detail=10 --simplification=5 --coalesce --drop-polygons --read-parallel --drop-smallest-as-needed -o output.mbtiles input.json
 ```
+### 4 Use the Patch Script from MBUtil package to create a composite layer of multiple Inputs
+We are having three basemaps with a scale of 1:1000k, 1:200k and 1:25k which we use to create MBTiles for their intended zoomlevel. After that (Step 3) we join them together using following script: https://github.com/mapbox/mbutil/blob/master/patch
+```
+./patch.sh gk1000k_0-9.mbtiles gk200k_10-14.mbtiles 
+.patch.sh [src] [dst]
+```
+However the script does not update the metadata.json, which must be edited by hand after the merging.
