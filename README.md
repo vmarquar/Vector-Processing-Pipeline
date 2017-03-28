@@ -7,7 +7,8 @@ ogr2ogr -s_srs EPSG:31463 -t_srs EPSG:3857 output.shp input.shp
 ```
 Or you can use the .prj file directly:
 ```
-ogr2ogr -a_srs input.prj output1.shp input.shp
+ogr2ogr -a_srs input.prj output_tmp.shp input.shp
+ogr2ogr -t_srs EPSG:3857 output.shp output_tmp.shp (untested, könnte aber funktionieren)
 ```
 
 ### 1 Merge Shape Files
