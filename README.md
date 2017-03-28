@@ -1,9 +1,15 @@
 # Vector Processing Pipeline
 
 ### 1 Transform shapefiles into EPSG:3857 projection (Web Mercator)
+When a .prj file is provided double check for the correct EPSG Code here: http://prj2epsg.org/search
 ```
-ogr2ogr -s_srs EPSG:31467 -t_srs EPSG:3857 output.shp input.shp
+ogr2ogr -s_srs EPSG:31463 -t_srs EPSG:3857 output.shp input.shp
 ```
+Or you can use the .prj file directly:
+```
+ogr2ogr -a_srs input.prj output1.shp input.shp
+```
+
 ### 1 Merge Shape Files
 All shape files must be in the same directory. `-R` allows recursive merging.
 ```
